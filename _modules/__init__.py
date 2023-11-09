@@ -3,9 +3,7 @@ from pathlib import Path
 
 import yaml
 
-PYTHON_PATH = Path(__file__).resolve().parent.parent.parent.parent / "s_cerevisiae" / 
-"s_cerevisiae" / "python"
-print(PYTHON_PATH)
+PYTHON_PATH = Path(__file__).resolve().parent.parent.parent.parent / "s_cerevisiae" / "s_cerevisiae" / "python"
 sys.path.append(str(PYTHON_PATH))
 
 from library import utils
