@@ -194,7 +194,7 @@ class SAFE:
 
         if not isinstance(self.num_permutations, int) or (self.num_permutations < 10):
             self.num_permutations = 1000    # Restore the default value.
-            raise ValueError('num_permutations must be an integer equal or greater than 10.')
+            # raise ValueError('num_permutations must be an integer equal or greater than 10.')
 
         if not isinstance(self.enrichment_threshold, float) or (self.enrichment_threshold <= 0) or (self.enrichment_threshold >= 1):
             self.enrichment_threshold = 0.05    # Restore the default value.
@@ -275,7 +275,7 @@ class SAFE:
             raise Exception('The specified node key attribute (%s) does not exist in this network. '
                             'These attributes exist instead: %s. '
                             'Set node_key_attribute to one of these options.'
-                            % (self.node_key_attribute, ', '.join(self.graph.node[0].keys())))
+                            % (self.node_key_attribute, ', '.join(self.graph.nodes[0].keys())))
         else:
             nx.set_node_attributes(self.graph, key_list, name='key')
             label_list = nx.get_node_attributes(self.graph, 'label')
@@ -339,7 +339,10 @@ class SAFE:
             node_distances = squareform(pdist(node_coordinates, 'euclidean'))
 
             neighborhoods[node_distances < nr] = 1
-
+# BUILD KEY BETWEEN INDEX AND GENES FOR FUNCTIONAL MODULES
+# IN THE END, YOU HAVE TO REFLECT A NEIGHBORHOODS MATRIX THAT REPRESENTS GENE OVERLAP BETWEEN NODES
+# 
+            
         else:
 
             if self.node_distance_metric == 'shortpath_weighted_layout':

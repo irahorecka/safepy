@@ -343,7 +343,7 @@ def load_attributes(attribute_file='', node_label_order=None, mask_duplicates=Fa
     node2attribute = node2attribute.apply(pd.to_numeric, errors='coerce')
 
     # Force attribute names to be strings
-    attributes['name'] = attributes['name'].astype(str)
+    # attributes['name'] = attributes['name'].astype(str)
 
     # Averaging duplicate rows (with notification)
     if not node2attribute.index.is_unique:
@@ -373,7 +373,7 @@ def load_attributes(attribute_file='', node_label_order=None, mask_duplicates=Fa
 
     node2attribute = node2attribute.values
 
-    if verbose:
+    if not verbose:
         print('\nAttribute data provided: %d labels x %d attributes' % (len(node_label_in_file), attributes.shape[0]))
 
         # Notification about labels **not** mapped onto the network
